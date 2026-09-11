@@ -81,6 +81,6 @@
     "typescript-native": "npm:typescript@^7.0.0",
     "vercel": "^54.14.2",
     "vite": "^7.3.5",
-    "vitest": "^4.1.9"
+    "vitest": "^4.1.11"
   }
 }
