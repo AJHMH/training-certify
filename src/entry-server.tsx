@@ -19,8 +19,9 @@ initSentry()
 type RenderOpts = Parameters<typeof defaultRenderHandler>[0]
 
 async function secureRenderHandler(opts: RenderOpts) {
-  const response = await defaultRenderHandler(opts)
-  return applySecurityHeaders(response)
+  const result = await defaultRenderHandler(opts)
+  if (result instanceof Response) return applySecurityHeaders(result)
+  return { ...result, response: applySecurityHeaders(result.response) }
 }
 
 export default createStartHandler(secureRenderHandler)

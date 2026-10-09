@@ -17,9 +17,7 @@ interface ReportsSectionProps {
   reports: Array<ComplianceReport>
   onGenerateReport?: (
     reportType:
-      | 'audit-trail-export'
-      | 'certification-status'
-      | 'compliance-summary',
+      'audit-trail-export' | 'certification-status' | 'compliance-summary',
     dateRange?: ComplianceReportDateRange,
   ) => void
   onDownloadReport?: (reportId: string) => void

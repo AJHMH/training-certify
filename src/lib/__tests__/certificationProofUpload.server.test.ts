@@ -1,3 +1,4 @@
+// @vitest-environment node
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { factories } from '../../test/factories'
 import { mockAuthForRole, setupTestMocks } from '../../api/__tests__/helpers'
@@ -95,6 +96,15 @@ describe('handlePostCertificationProof', () => {
     const data = await response.json()
     expect(data.success).toBe(true)
     expect(data.proof).toMatchObject({ fileName: 'certificate.pdf' })
+    const { uploadCertificationProof } =
+      await import('../certificationProofStorage.server')
+    expect(uploadCertificationProof).toHaveBeenCalledWith({
+      data: new Uint8Array([1, 2, 3]),
+      contentType: 'application/pdf',
+      fileName: 'certificate.pdf',
+      userId: user.id,
+      certificationId: certId,
+    })
   })
 
   it('returns 400 when Content-Type is not multipart', async () => {

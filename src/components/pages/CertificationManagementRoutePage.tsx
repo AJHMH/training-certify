@@ -5,11 +5,7 @@ import { ensureUser } from '../../api/users'
 import { fetchWithCsrf } from '../../lib/csrf'
 
 type CertificationStatus =
-  | 'active'
-  | 'expiring'
-  | 'expiring-soon'
-  | 'expired'
-  | 'assigned'
+  'active' | 'expiring' | 'expiring-soon' | 'expired' | 'assigned'
 
 type CertificationCreateData = {
   certificationId: string

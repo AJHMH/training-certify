@@ -119,9 +119,7 @@ export interface ComplianceAuditProps {
   /** Called when user wants to generate a new compliance report */
   onGenerateReport?: (
     reportType:
-      | 'audit-trail-export'
-      | 'certification-status'
-      | 'compliance-summary',
+      'audit-trail-export' | 'certification-status' | 'compliance-summary',
     dateRange?: ComplianceReportDateRange,
   ) => void
   /** Called when user wants to download a completed report */

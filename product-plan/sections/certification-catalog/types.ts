@@ -67,11 +67,7 @@ export interface CertificationCatalogProps {
   onFilter?: (filters: {
     vendor?: string
     category?:
-      | 'Cloud'
-      | 'Security'
-      | 'Networking'
-      | 'Data'
-      | 'Project Management'
+      'Cloud' | 'Security' | 'Networking' | 'Data' | 'Project Management'
     difficulty?: 'Beginner' | 'Intermediate' | 'Advanced' | 'Expert'
   }) => void
 }

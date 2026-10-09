@@ -91,7 +91,7 @@ export const Route = createFileRoute('/api/team-requirements')({
             if (!validation.success) {
               throw new ValidationError(
                 'Invalid team requirement data',
-                validation.error.errors,
+                validation.error.issues,
               )
             }
 
