@@ -326,11 +326,7 @@ export interface PendingVerification {
 // =============================================================================
 
 export type CertificationStatus =
-  | 'active'
-  | 'expiring'
-  | 'expiring-soon'
-  | 'expired'
-  | 'assigned'
+  'active' | 'expiring' | 'expiring-soon' | 'expired' | 'assigned'
 export type NotificationType =
   | 'expiration-alert'
   | 'renewal-reminder'
@@ -355,16 +351,9 @@ export type UserRole =
   | 'Executive'
   | 'Auditor'
 export type CertificationCategory =
-  | 'Cloud'
-  | 'Security'
-  | 'Networking'
-  | 'Data'
-  | 'Project Management'
+  'Cloud' | 'Security' | 'Networking' | 'Data' | 'Project Management'
 export type CertificationDifficulty =
-  | 'Beginner'
-  | 'Intermediate'
-  | 'Advanced'
-  | 'Expert'
+  'Beginner' | 'Intermediate' | 'Advanced' | 'Expert'
 export type Priority = 'low' | 'medium' | 'high'
 export type RequirementPriority = 'required' | 'recommended'
 export type Trend = 'up' | 'down' | 'stable'

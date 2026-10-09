@@ -327,7 +327,10 @@ export const UpdateCatalogCertificationSchema = z.object({
 export const NotificationPreferenceSchema = z.object({
   userId: z.string().max(255, 'User ID too long').optional(),
   preferences: z
-    .record(z.boolean().or(z.string().max(255, 'Preference value too long')))
+    .record(
+      z.string(),
+      z.boolean().or(z.string().max(255, 'Preference value too long')),
+    )
     .optional(),
 })
 

@@ -322,7 +322,7 @@ export const Route = createFileRoute('/api/teams')({
             if (!validation.success) {
               throw new ValidationError(
                 'Invalid team data',
-                validation.error.errors,
+                validation.error.issues,
               )
             }
 

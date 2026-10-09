@@ -77,7 +77,7 @@ export const Route = createFileRoute('/api/notification-settings')({
             if (!validation.success) {
               throw new ValidationError(
                 'Invalid preference data',
-                validation.error.errors,
+                validation.error.issues,
               )
             }
 
@@ -108,7 +108,7 @@ export const Route = createFileRoute('/api/notification-settings')({
             if (!validation.success) {
               throw new ValidationError(
                 'Invalid notification action',
-                validation.error.errors,
+                validation.error.issues,
               )
             }
 

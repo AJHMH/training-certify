@@ -106,11 +106,13 @@ export const Route = createRootRouteWithContext<{
       </Link>
     </div>
   ),
-  errorComponent: ({ error }: { error: Error }) => (
+  errorComponent: ({ error }) => (
     <div className="p-8 text-center bg-red-50 text-red-900 rounded-lg border border-red-200">
       <h2 className="text-xl font-bold">Something went wrong</h2>
       <pre className="mt-4 text-xs overflow-auto text-left p-4 bg-white rounded border">
-        {error.message}
+        {error instanceof Error
+          ? error.message
+          : 'An unexpected error occurred'}
       </pre>
       <button
         onClick={() => window.location.reload()}

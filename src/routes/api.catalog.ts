@@ -355,7 +355,7 @@ export const Route = createFileRoute('/api/catalog')({
                 if (!validation.success) {
                   errors.push({
                     row: rowIndex,
-                    message: validation.error.errors
+                    message: validation.error.issues
                       .map((e) => e.message)
                       .join('; '),
                   })
@@ -432,7 +432,7 @@ export const Route = createFileRoute('/api/catalog')({
             if (!validation.success) {
               throw new ValidationError(
                 'Invalid certification data',
-                validation.error.errors,
+                validation.error.issues,
               )
             }
 
@@ -504,7 +504,7 @@ export const Route = createFileRoute('/api/catalog')({
             if (!validation.success) {
               throw new ValidationError(
                 'Invalid certification update data',
-                validation.error.errors,
+                validation.error.issues,
               )
             }
 

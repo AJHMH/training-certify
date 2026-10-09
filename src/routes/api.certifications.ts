@@ -228,7 +228,7 @@ export const Route = createFileRoute('/api/certifications')({
             if (!validation.success) {
               throw new ValidationError(
                 'Invalid certification data',
-                validation.error.errors,
+                validation.error.issues,
               )
             }
 
@@ -327,7 +327,7 @@ export const Route = createFileRoute('/api/certifications')({
             if (!validation.success) {
               throw new ValidationError(
                 'Invalid update data',
-                validation.error.errors,
+                validation.error.issues,
               )
             }
 

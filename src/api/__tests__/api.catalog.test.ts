@@ -391,6 +391,36 @@ Cert A,Vendor A`
       expect(data.error).toContain('id')
     })
 
+    it('POST ?action=import reports Zod validation issues for invalid rows', async () => {
+      const { auth } = await import('@clerk/tanstack-react-start/server')
+      const admin = await mockAuthForRole('Admin', auth)
+      await setupTestMocks(admin, [])
+
+      const request = new Request(
+        'http://localhost/api/catalog?action=import',
+        {
+          method: 'POST',
+          body: `id,name\ncert1,${'x'.repeat(256)}`,
+          headers: { 'Content-Type': 'text/csv; charset=utf-8' },
+        },
+      )
+      const { Route } = await import('../../routes/api.catalog')
+      const handler = (Route.options.server?.handlers as any)?.POST
+      if (!handler) throw new Error('POST handler not found')
+
+      const response = await handler({ request } as any)
+      expect(response.status).toBe(200)
+      const data = await response.json()
+      expect(data.updated).toBe(0)
+      expect(data.skipped).toBe(1)
+      expect(data.errors).toEqual([
+        {
+          row: 2,
+          message: 'Name must be 255 characters or less',
+        },
+      ])
+    })
+
     it('POST ?action=import records not-found rows as skipped', async () => {
       const { auth } = await import('@clerk/tanstack-react-start/server')
       const admin = await mockAuthForRole('Admin', auth)

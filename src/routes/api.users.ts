@@ -322,7 +322,7 @@ export const Route = createFileRoute('/api/users')({
             if (!validation.success) {
               throw new ValidationError(
                 'Invalid update data',
-                validation.error.errors,
+                validation.error.issues,
               )
             }
 
